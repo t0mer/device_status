@@ -1,0 +1,12 @@
+{
+    "domain": "device_status",
+    "name": "Device Status",
+    "documentation": "https://github.com/t0mer/device_status",
+    "dependencies": [],
+    "codeowners": [
+        "@t0mer"
+    ],
+    "requirements": [
+        "fping==0.0.1"
+    ]
+}
