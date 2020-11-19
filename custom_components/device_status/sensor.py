@@ -26,6 +26,7 @@ sensor:
 import datetime
 import logging
 import re
+import os
 import subprocess
 import voluptuous as vol
 from homeassistant.helpers.entity import Entity, generate_entity_id 
@@ -34,7 +35,7 @@ from homeassistant.components.sensor import DOMAIN, PLATFORM_SCHEMA
 from homeassistant.const import (CONF_HOST, CONF_NAME, CONF_SCAN_INTERVAL, CONF_ICON, CONF_DEVICES)
 
 
-REQUIREMENTS = ['fping']
+
 DEPENDENCIES = []
 _LOGGER = logging.getLogger(__name__)
 #DEFAULT_NAME = 'Check Status' # 
@@ -59,6 +60,18 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     
+    try:
+        if not os.path.exists('/usr/sbin/fping'):
+            os.system('apk add fping')
+   
+        if not os.path.exists('/usr/bin/fping'):
+            os.system('apt inftall fping -y')
+
+    except Exception as e:
+        logging.warning(str(e))
+
+
+
     scan_interval = config.get(CONF_SCAN_INTERVAL) 
     devices = config.get(CONF_DEVICES)
 
