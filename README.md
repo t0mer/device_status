@@ -61,7 +61,7 @@ sensor:
 
 ## Credits
 
-Written by Tomer Klein, with thanks to [Tomer Figenblat](https://github.com/TomerFi) for his help.
+Written by Tomer Klein, with thanks to [Tomer Figenblat](https://github.com/TomerFi) for all the help.
 
 ## License
 
